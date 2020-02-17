@@ -1,0 +1,71 @@
+
+
+
+<h1>post details</h1>
+Search : <%= form_tag(posts_path, method: :get) do %>
+<%= text_field_tag(:search, params[:title]) %><br><br>
+<%= submit_tag ("Search") %><br><br>
+<% end %>
+
+<table id="test">
+  <thead >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <style align = "center">
+table, th, td {
+  border: 1px solid black;
+  font-size: 18px;
+} 
+</style>
+    <tr class="bg-info">
+      <th>
+       <input type="checkbox" id="qw" name="" value="" >
+     </th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Salary</th>
+  </tr></thead>
+  <tbody>
+  	<% @posts.each do |post|%>
+  	<tr>
+       <td>
+    <input type="checkbox" name="" value="" >
+    </td>
+  	<td> <%= post.title %> </td>
+  	<td><%= post.content %></td>
+  	<td><%= post.salary %></td>
+  	<td><%= link_to "show",post %></td>
+  	<td><%= link_to "edit",edit_post_path(post) %></td>
+  	<td><%= link_to "delete", post_path(post.id), method: :delete %></td>
+
+  	<%= will_paginate @posts %>
+  	 <%end%>
+  	  </tr>
+
+  </tbody>
+</table>
+<%= link_to 'newpost',new_post_path , :class => "button btn btn-success"%>
+<%=link_to "click here", post_ajaxreq_path(1), remote: true %>
+
+<div id="test">
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $("#as").click(function() {
+    //   $('input:checkbox').attr('checked','checked');
+    // })
+
+    // $("#asd").click(function() {
+    //   $('input:checkbox').removeAttr('checked');
+    // })
+    
+    $("#qw").click(function()  { 
+      if($(this).is(':checked')) 
+      {
+        $('input:checkbox').attr('checked','checked');
+      }
+      else{
+      $('input:checkbox').removeAttr('checked');
+      }
+    })
+    
+})

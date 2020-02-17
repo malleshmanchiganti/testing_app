@@ -1,0 +1,2 @@
+class Physitian < ApplicationRecord
+end

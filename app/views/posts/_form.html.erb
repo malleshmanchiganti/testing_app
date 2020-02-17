@@ -1,0 +1,25 @@
+<span>
+	<%=@errors%>
+</span>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<center>
+<%= form_for @post do|form|%>
+	<div>
+	<%= form.label :title%>
+	<%= form.text_field :title,placeholder: "Please enter  title",:id=>"title"%>
+	</div>
+	<div>
+	<%= form.label :content%>
+	<%= form.text_field :content,placeholder: "Please enter content",:id=>"content"%>
+	</div>
+	<div>
+	<%= form.label :salary%>
+	<%= form.number_field :salary,placeholder: "Please enter salary",:id=>"salary"%>
+	</div>
+
+	<div>
+	<%=form.submit :submit ,{ :class=>"btn btn-info", data: { disable_with: false }} %></div>
+<%end%>
+<form>
+
+	</center>
